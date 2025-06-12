@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidenav {
+  position: fixed;
+  top: 0;
+  width: 16.5625rem;
+  height: 100vh;
+  z-index: 1000;
+  transition: left 0.3s ease-in-out;
+}
+
+.sidenav-open {
+  left: 0; 
+  width: 16.5625rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* Abaixo do sidenav, acima do conteúdo */
+}
+
+.content {
+  position: relative;
+  padding: 1rem;
+  z-index: 1; /* Fica por baixo do sidenav */
+}

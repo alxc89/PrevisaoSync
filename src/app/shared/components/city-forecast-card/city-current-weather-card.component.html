@@ -1,0 +1,42 @@
+<ng-container *ngFor="let forecast of dailyForecast">
+  <mat-card class="weather-card">
+    <div class="weather-main">
+      <div class="weather-header">
+        <h2>{{ forecast.cityName }}, {{ forecast.countryCode }}</h2>
+        <div class="weather-info">
+          <img
+            [src]="
+              forecast.weatherIconUrl ||
+              'https://openweathermap.org/img/wn/01d@2x.png'
+            "
+            alt="Ícone clima"
+            class="weather-icon"
+          />
+          <div>
+            <div class="temperature">{{ forecast.temperature }} °C</div>
+            <div class="feels-like">
+              Sensação térmica: {{ forecast.feelsLike }} °C
+            </div>
+            <div class="description">{{ forecast.weatherDescription }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="weather-details">
+        <div class="weather-extra">
+          <div>Umidade: {{ forecast.humidity }}%</div>
+          <div>Vento: {{ forecast.windSpeed }} m/s</div>
+        </div>
+
+        <div class="actions">
+          <a [hidden]="!isRemove" routerLink="#"> <mat-icon>delete</mat-icon></a>
+          <a [hidden]="isRemove" routerLink="#"
+            ><mat-icon>favorite</mat-icon></a
+          >
+          <mat-icon>align_justify_center</mat-icon>
+          <a routerLink="/details"><mat-icon>edit</mat-icon></a>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</ng-container>

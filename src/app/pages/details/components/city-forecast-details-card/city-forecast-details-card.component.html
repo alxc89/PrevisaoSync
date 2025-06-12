@@ -1,0 +1,20 @@
+<div class="forecast-detail-container">
+  <mat-card *ngFor="let day of forecasts" class="forecast-day-card">
+    <div class="day-header">{{ day.date }}</div>
+
+    <div class="info">
+      <img [src]="day.iconUrl" class="icon" alt="Ícone do clima">
+      <div class="temp">
+        <div><strong>{{ day.temperature }}°C</strong></div>
+        <div>Sensação: {{ day.feelsLike }}°C</div>
+      </div>
+    </div>
+
+    <div class="description">{{ day.description }}</div>
+
+    <div class="stats">
+      <span>Umidade: {{ day.humidity }}%</span>
+      <span>Vento: {{ day.windSpeed }} m/s</span>
+    </div>
+  </mat-card>
+</div>

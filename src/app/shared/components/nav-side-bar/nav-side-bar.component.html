@@ -1,0 +1,31 @@
+<!-- SIDEBAR (aparece somente quando não está colapsado) -->
+<mat-nav-list class="sidenav" *ngIf="!collapsed">
+  <div class="container">
+    <!-- Botão de fechar visível apenas em telas pequenas -->
+    <button
+      class="close-button"
+      *ngIf="showCloseButton"
+      (click)="closeSidenav()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <div class="app-header">
+      <a mat-list-item routerLink="/home">
+        <span>Home</span>
+      </a>
+      <a mat-list-item routerLink="/favorites">
+        <span>Favoritos</span>
+      </a>
+    </div>
+  </div>
+</mat-nav-list>
+
+<!-- BOTÃO MENU (aparece apenas se colapsado e em tela pequena) -->
+<button
+  class="toggle-button"
+  *ngIf="showToggleButton"
+  (click)="toggleCollapse()"
+>
+  <mat-icon>menu</mat-icon>
+</button>
