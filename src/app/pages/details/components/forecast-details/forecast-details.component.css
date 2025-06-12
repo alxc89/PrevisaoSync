@@ -1,0 +1,19 @@
+.forecast-container {
+  display: flex;
+  justify-content: space-between;
+  width: 60.3vw;
+  height: 40vh;
+  margin-bottom: 3vh;
+}
+
+.forecast-content {
+  width: 50%;
+  height: 100%;
+  border: 2px solid black;
+}
+
+.forecast-content-extra {
+  width: 50%;
+  height: 100%;
+  border: 2px solid black;
+}
