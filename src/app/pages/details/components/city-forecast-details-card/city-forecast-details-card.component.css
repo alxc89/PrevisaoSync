@@ -1,6 +1,6 @@
 .forecast-detail-container {
   display: flex;
-  width: 80%;
+  width: 100%;
   flex-direction: column;
   gap: 16px;
 }
@@ -48,11 +48,10 @@
   align-items: flex-end;
   font-size: 13px;
   color: #555;
+  width: 100%;
 }
 
-
-/* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .forecast-day-card {
     grid-template-columns: 1fr;
     text-align: center;

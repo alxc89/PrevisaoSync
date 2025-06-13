@@ -3,7 +3,7 @@
     <div class="day-header">{{ day.date }}</div>
 
     <div class="info">
-      <img [src]="day.iconUrl" class="icon" alt="Ícone do clima">
+      <img [src]="day.iconUrl || 'https://openweathermap.org/img/wn/01n@2x.png'" class="icon" alt="Ícone do clima">
       <div class="temp">
         <div><strong>{{ day.temperature }}°C</strong></div>
         <div>Sensação: {{ day.feelsLike }}°C</div>

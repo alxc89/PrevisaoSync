@@ -1,9 +1,74 @@
-<div class="forecast-container">
-  <div class="forecast-content">
-    <div class="forecast-image"></div>
-    <div class="forecast-information"></div>
-  </div>
-  <div class="forecast-content-extra">
-    <div class="forecast-extra"></div>
-  </div>
-</div>
+<mat-card class="weather-card">
+  <mat-card-header class="weather-card-header">
+    <mat-card-title
+      >{{ weatherData.name }}, {{ weatherData.sys.country }}</mat-card-title
+    >
+    <mat-card-subtitle>{{ weatherData.dt }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="content">
+    <div class="icon-block">
+      <img [src]="weatherIconUrl || 'https://openweathermap.org/img/wn/01n@2x.png'" [alt]="weatherData.weather[0].description" />
+      <span
+        >{{ weatherData.weather[0].description }} 
+        </span
+      >
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="details-grid">
+      <div class="detail-item">
+        <mat-icon>thermostat</mat-icon>
+        <span><strong>Temp:</strong> {{ weatherData.main.temp }} °C</span>
+      </div>
+      <div class="detail-item">
+        <mat-icon>device_thermostat</mat-icon>
+        <span
+          ><strong>Sensação:</strong> {{ weatherData.main.feels_like }} °C</span
+        >
+      </div>
+      <div class="detail-item">
+        <mat-icon>south</mat-icon>
+        <span><strong>Mín:</strong> {{ weatherData.main.temp_min }} °C</span>
+      </div>
+      <div class="detail-item">
+        <mat-icon>north</mat-icon>
+        <span><strong>Máx:</strong> {{ weatherData.main.temp_max }} °C</span>
+      </div>
+      <div class="detail-item">
+        <mat-icon>water_drop</mat-icon>
+        <span><strong>Umidade:</strong> {{ weatherData.main.humidity }}%</span>
+      </div>
+      <div class="detail-item">
+        <mat-icon>compress</mat-icon>
+        <span
+          ><strong>Pressão:</strong> {{ weatherData.main.pressure }} hPa</span
+        >
+      </div>
+      <div class="detail-item">
+        <mat-icon>air</mat-icon>
+        <span
+          ><strong>Vento:</strong> {{ weatherData.wind.speed }} m/s ({{
+            weatherData.wind.deg
+          }}°)</span
+        >
+      </div>
+      <div class="detail-item">
+        <mat-icon>visibility</mat-icon>
+        <span
+          ><strong>Visibilidade:</strong>
+          {{ weatherData.visibility / 1000 }} km</span
+        >
+      </div>
+      <div class="detail-item">
+        <mat-icon>wb_sunny</mat-icon>
+        <span><strong>Nascer:</strong> {{ weatherData.sys.sunrise }} UTC</span>
+      </div>
+      <div class="detail-item">
+        <mat-icon>nights_stay</mat-icon>
+        <span><strong>Pôr do sol:</strong> {{ weatherData.sys.sunset }} UTC</span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
