@@ -1,4 +1,4 @@
-# 🌤️ WeatherApp
+# 🌤️ PrevisaoSync
 
 Aplicação para consultar a previsão do tempo de cidades e salvar favoritas para acesso rápido.
 
