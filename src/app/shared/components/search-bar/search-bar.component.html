@@ -1,11 +1,27 @@
 <mat-form-field appearance="outline" floatLabel="always" class="form-field">
-  <input matInput type="text" placeholder="São Paulo" [(ngModel)]="value">
-  @if (value) {
-    <button matSuffix matIconButton aria-label="Clear" (click)="value=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  }
-  <button matSuffix matIconButton aria-label="Clear" (click)="value=''">
-      <mat-icon>search</mat-icon>
-    </button>
+  <input
+    type="text"
+    matInput
+    placeholder="São Paulo"
+    [formControl]="searchControl"
+    [matAutocomplete]="auto" />
+
+  <button
+    *ngIf="searchControl.value"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="searchControl.setValue('')">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <button matSuffix mat-icon-button aria-label="Search">
+    <mat-icon>search</mat-icon>
+  </button>
+
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onSelect($event.option.value)">
+    <mat-option *ngFor="let city of filteredCities$ | async" [value]="city">
+      {{ city.name }} - {{ city.state ?? '' }} - {{ city.country }}
+    </mat-option>
+  </mat-autocomplete>
 </mat-form-field>

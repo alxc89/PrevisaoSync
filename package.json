@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:frontend": "ng build --configuration production && http-server ./dist/PrevisaoSync/browser -p 4200",
+    "start:tunnel": "start ngrok http 4200 && start ngrok http 5000"
   },
   "private": true,
   "dependencies": {

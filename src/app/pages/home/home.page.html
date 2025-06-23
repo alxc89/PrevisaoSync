@@ -1,6 +1,7 @@
 <div class="home-container">
-  <app-search-bar></app-search-bar>
+  <app-search-bar (forecastSelected)="showForecast($event)"></app-search-bar>
   <app-city-current-weather-card
     [isRemove]="false"
+    [weatherData]="weatherData"
   ></app-city-current-weather-card>
 </div>

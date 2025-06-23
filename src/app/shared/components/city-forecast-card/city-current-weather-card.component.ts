@@ -1,32 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-
-export interface DailyForecast {
-  cityName: string;
-  countryCode: string;
-  temperature: number;
-  feelsLike: number;
-  weatherDescription: string;
-  humidity: number;
-  windSpeed: number;
-  weatherIconUrl: string;
-}
-
-const dailyForecast: DailyForecast[] = [
-  {
-    cityName: 'São José do Rio Preto',
-    countryCode: 'Brasil',
-    temperature: 28.2,
-    feelsLike: 28.2,
-    weatherDescription: 'Céu limpo',
-    humidity: 64,
-    windSpeed: 1.54,
-    weatherIconUrl: '',
-  },
-];
+import { WeatherData } from '../../../core/services/cityService.service';
+import {
+  FavoriteCity,
+  FavoriteService,
+} from '../../../core/services/favorites.service';
 
 @Component({
   selector: 'app-city-current-weather-card',
@@ -35,8 +16,38 @@ const dailyForecast: DailyForecast[] = [
   templateUrl: './city-current-weather-card.component.html',
   styleUrls: ['./city-current-weather-card.component.css'],
 })
-
 export class CityCurrentWeatherCardComponent {
-  @Input() dailyForecast : DailyForecast[] = dailyForecast;
-  @Input() isRemove : boolean = false;
+  @Input() weatherData: WeatherData[] = [];
+  @Input() isRemove: boolean = false;
+  favoriteCity!: FavoriteCity;
+
+  constructor(private favoriteService: FavoriteService) {}
+
+  favorites(forecast: any): void {
+    this.favoriteCity = {
+      id: forecast.id,
+      code: forecast.id.toString(),
+      name: forecast.name,
+      lon: forecast.lon,
+      lat: forecast.lat,
+      icon: forecast.weather[0].icon,
+      temp: forecast.main.temp,
+      feels_like: forecast.main.feels_like,
+      description: forecast.weather[0].description,
+      humidity: forecast.main.humidity,
+      speed: forecast.wind.speed,
+      userId: 1,
+    };
+    console.log('Favoritos:', this.favoriteCity);
+
+    this.favoriteService.addFavorites(this.favoriteCity).subscribe({
+      next: (data) => {
+        console.log('Favoritos:', data);
+      },
+      error: (err) => {
+        console.error('Erro ao adicionar aos favoritos:', err);
+      },
+    });
+    console.log(this.favoriteCity);
+  }
 }

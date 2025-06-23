@@ -1,20 +1,20 @@
 <div class="forecast-detail-container">
-  <mat-card *ngFor="let day of forecasts" class="forecast-day-card">
-    <div class="day-header">{{ day.date }}</div>
+  <mat-card *ngFor="let day of weatherDetailsData" class="forecast-day-card">
+    <div class="day-header">{{ day.dt_Txt }}</div>
 
     <div class="info">
-      <img [src]="day.iconUrl || 'https://openweathermap.org/img/wn/01n@2x.png'" class="icon" alt="Ícone do clima">
+      <img [src]="`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`" class="icon" alt="Ícone do clima">
       <div class="temp">
-        <div><strong>{{ day.temperature }}°C</strong></div>
-        <div>Sensação: {{ day.feelsLike }}°C</div>
+        <div><strong>{{ day.main.temp }}°C</strong></div>
+        <div>Sensação: {{ day.main.feels_like }}°C</div>
       </div>
     </div>
 
-    <div class="description">{{ day.description }}</div>
+    <div class="description">{{ day.weather[0].description }}</div>
 
     <div class="stats">
-      <span>Umidade: {{ day.humidity }}%</span>
-      <span>Vento: {{ day.windSpeed }} m/s</span>
+      <span>Umidade: {{ day.main.humidity }}%</span>
+      <span>Vento: {{ day.wind.speed }} m/s</span>
     </div>
   </mat-card>
 </div>

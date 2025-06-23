@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { WeatherData } from '../../../../core/services/cityService.service';
 
 export interface DailyForecast {
   date: string;
@@ -12,45 +13,6 @@ export interface DailyForecast {
   iconUrl: string;
 }
 
-const dailyForecast: DailyForecast[] = [
-  {
-    date: '08/06/2025',
-    temperature: 28.2,
-    feelsLike: 28.2,
-    description: 'Céu Limpo',
-    humidity: 64,
-    windSpeed: 1.54,
-    iconUrl: '',
-  },
-  {
-    date: '09/06/2025',
-    temperature: 28.2,
-    feelsLike: 28.2,
-    description: 'Céu Limpo',
-    humidity: 64,
-    windSpeed: 1.54,
-    iconUrl: '',
-  },
-  {
-    date: '10/06/2025',
-    temperature: 28.2,
-    feelsLike: 28.2,
-    description: 'Céu Limpo',
-    humidity: 64,
-    windSpeed: 1.54,
-    iconUrl: '',
-  },
-  {
-    date: '11/06/2025',
-    temperature: 28.2,
-    feelsLike: 28.2,
-    description: 'Céu Limpo',
-    humidity: 64,
-    windSpeed: 1.54,
-    iconUrl: '',
-  },
-];
-
 @Component({
   selector: 'app-card-forecast-details',
   standalone: true,
@@ -59,5 +21,5 @@ const dailyForecast: DailyForecast[] = [
   styleUrls: ['./city-forecast-details-card.component.css'],
 })
 export class CardForecastDetailsComponent {
-  @Input() forecasts: DailyForecast[] = dailyForecast;
+  @Input() weatherDetailsData!: WeatherData[];
 }

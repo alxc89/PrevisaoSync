@@ -1,18 +1,11 @@
-import {
-  Component,
-  EventEmitter,
-  HostListener,
-  Input,
-  Output,
-  SimpleChange,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FavoriteService } from '../../../core/services/favorites.service';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -38,6 +31,10 @@ export class NavSideBarComponent {
   collapsed = false;
   showCloseButton = false;
   showToggleButton = false;
+  favorites: any[] = [];
+  userId = '1';
+
+  constructor(private favoriteService: FavoriteService) {}
 
   ngOnInit(): void {
     this.resize(window.innerWidth);
@@ -88,6 +85,18 @@ export class NavSideBarComponent {
       showToggleButton: !this.collapsed,
       screenWidth: window.innerWidth,
       isOVerlayOpen: event.isOVerlayOpen,
+    });
+  }
+
+  getFavorites(): void {
+    this.favoriteService.getFavorites(this.userId).subscribe({
+      next: (data) => {
+        console.log('Favoritos:', data);
+        this.favorites = data;
+      },
+      error: (err) => {
+        console.error('Erro ao buscar favoritos:', err);
+      },
     });
   }
 }

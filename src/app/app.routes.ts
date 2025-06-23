@@ -18,6 +18,6 @@ export const routes: Routes = [
         path: 'favorites', component: FavoritesPage
     },
     {
-        path: 'details', component: DetailsPage
+        path: 'details/lat/:lat/lon/:lon', component: DetailsPage
     }
 ];
