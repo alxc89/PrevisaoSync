@@ -22,13 +22,12 @@ Aplicação para consultar a previsão do tempo de cidades e salvar favoritas pa
 ## 🛠️ Tecnologias utilizadas
 
 - **Frontend**: Angular
-- **Backend**: .NET Framework 4.5
-- **API de Clima**: OpenWeatherMap (ou similar)
+- **API de Clima**: OpenWeatherMap
 
 ## ✅ Como usar
 
 1. Busque o nome de uma cidade no campo de pesquisa
-2. Clique no ícone de lupa para "Buscar"
+2. Clique no ícone de "lupa" para buscar
 3. Veja os detalhes da previsão
 4. Clique no ícone de "Coração" para adicionar aos favoritos
 
